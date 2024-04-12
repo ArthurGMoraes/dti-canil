@@ -31,58 +31,58 @@ public class PetShop {
         setAlt_precoG(aG);
     }
 
-    void setNome(String n){
+    private void setNome(String n){
         this.nome = n;
     }
 
-    void setPrecoP(float p){
+    private void setPrecoP(float p){
         this.precoP = p;
     }
     
-    void setPrecoG(float g){
+    private void setPrecoG(float g){
         this.precoG = g;
     }
 
-    void setDistancia(float d){
+    private void setDistancia(float d){
         this.distancia = d;
     }
 
-    void setAlt(boolean a){
+    private void setAlt(boolean a){
         this.alt = a;
     }
 
-    void setAlt_precoP(float aP){
+    private void setAlt_precoP(float aP){
         this.alt_precoP = aP;
     }
 
-    void setAlt_precoG(float aG){
+    private void setAlt_precoG(float aG){
         this.alt_precoG = aG;
     }
 
-    String getNome(){
+    public String getNome(){
         return this.nome;
     }
 
-    float getPrecoP(){
+    public float getPrecoP(){
         return this.precoP;
     }
 
-    float getPrecoG(){
+    public float getPrecoG(){
         return this.precoG;
     }
 
-    float getDistancia(){
+    public float getDistancia(){
         return this.distancia;
     }
 
-    boolean getAlt(){
+    public boolean getAlt(){
         return this.alt;
     }
-    float getAltPrecoP(){
+    public float getAltPrecoP(){
         return this.alt_precoP;
     }
 
-    float getAltPrecoG(){
+    public float getAltPrecoG(){
         return this.alt_precoG;
     }
 }
