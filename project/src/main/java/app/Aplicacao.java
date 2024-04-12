@@ -10,5 +10,6 @@ public class Aplicacao {
         staticFiles.location("/web");
 
         get("/home", (request, response) -> appService.load(request, response));
+        post("/buscar", (request, response) -> appService.buscar(request, response));
     }
 }
