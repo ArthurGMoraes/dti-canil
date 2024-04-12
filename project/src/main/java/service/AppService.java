@@ -11,6 +11,8 @@ public class AppService {
     private PetShop mcf = new PetShop("Meu Canino Feliz", 20.0f, 40.0f, 2.0f, (20.0f*1.2f), (40.0f*1.2f));
     private PetShop vr = new PetShop("Vai Rex", 15.0f, 50.0f, 1.7f, 20.0f, 55.0f);
     private PetShop cc = new PetShop("ChowChawgas", 15.0f, 50.0f, 1.7f);
+	private PetShop[] psArr = new PetShop[]{mcf,vr,cc};
+
     private String pathArq = "project/src/main/resources/web/index.html";
     private String form = "";
 	private Calendar calendar = Calendar.getInstance();
@@ -24,10 +26,6 @@ public class AppService {
 
 		String busca = "";
 		String action = "buscar";
-		Date data;
-		int qtdP;
-		int qtdG;
-		String descricao = "Conteúdo";
 		String buttonLabel = "Buscar";
 
 		busca += "\t<form class=\"form--register\" action=\"" + action + "\" method=\"post\" id=\"buscar\">";
@@ -67,79 +65,53 @@ public class AppService {
 		int dia = calendar.get(Calendar.DAY_OF_WEEK);
 
 		if (dia == Calendar.SATURDAY || dia == Calendar.SUNDAY) {
-			precos = calcular(mcf, vr, cc, quantidadeP, quantidadeG, 1);
+			precos = calcular(psArr, quantidadeP, quantidadeG, 1);
         } else {
-            precos = calcular(mcf, vr, cc, quantidadeP, quantidadeG, 0);
+            precos = calcular(psArr, quantidadeP, quantidadeG, 0);
         }
 
-		indice = conferir(precos, mcf, vr, cc);
+		indice = conferir(precos, psArr);
 
-		if(indice == 0){
-			resposta = mcf.getNome() + " " + precos[indice];
-		} else if (indice == 1){
-			resposta = vr.getNome() + " " + precos[indice];
-		} else {
-			resposta = cc.getNome() + " " +  precos[indice];
-		}
-
+		resposta = psArr[indice].getNome() + " " + precos[indice];
+	
 		form = form.replaceFirst("<CAMPO_RESPOSTA>", resposta);
 
 		return form;
 	}
 
-	private int conferir(float[] p, PetShop m, PetShop v, PetShop c){
+	private int conferir(float[] p, PetShop[] ps){
 		int indice = 0;
 		float menorValor = p[0];
 
-		if(p[1] < menorValor){
-			menorValor = p[1];
-			indice = 1;
-		} else if (p[1] == menorValor){
-			if(v.getDistancia() < m.getDistancia()){
-				indice = 1;
+		for(int i = 1; i < p.length; i++){
+			if(p[i] < menorValor){
+				menorValor = p[i];
+				indice = i;
+			} else if (p[i] == menorValor){
+				if(ps[i].getDistancia() < ps[indice].getDistancia()){
+					menorValor = p[i];
+					indice = i;
+				}
 			}
 		}
-
-		if(p[2] < menorValor){
-			indice = 2;
-		} else if (p[2] == menorValor){
-			if(indice == 0){
-				if(c.getDistancia() < m.getDistancia()){
-					indice = 2;
-				}
-			} else if(c.getDistancia() < v.getDistancia()){
-				indice = 2;
-			}	
-		}
-
 
 		return indice;
 	}
 
-	private float[] calcular(PetShop m, PetShop v, PetShop c, int quantidadeP, int quantidadeG, int caso){
-		float result[] = new float[3];
+	private float[] calcular(PetShop[]p, int quantidadeP, int quantidadeG, int caso){
+		float result[] = new float[p.length];
 
 		if(caso == 0){
-			result[0] = (quantidadeP * m.getPrecoP()) + (quantidadeG * m.getPrecoG());
-			result[1] = (quantidadeP * v.getPrecoP()) + (quantidadeG * v.getPrecoG());
-			result[2] = (quantidadeP * c.getPrecoP()) + (quantidadeG * c.getPrecoG());
-		} else {
-			if(m.getAlt()){
-				result[0] = (quantidadeP * m.getAltPrecoP()) + (quantidadeG * m.getAltPrecoG());
-			} else {
-				result[0] = (quantidadeP * m.getPrecoP()) + (quantidadeG * m.getPrecoG());
-			} 
-
-			if (v.getAlt()){
-				result[1] = (quantidadeP * v.getAltPrecoP()) + (quantidadeG * v.getAltPrecoG());
-			} else {
-				result[1] = (quantidadeP * v.getPrecoP()) + (quantidadeG * v.getPrecoG());
+			for (int i = 0; i < p.length; i++){
+				result[i] = (quantidadeP * p[i].getPrecoP()) + (quantidadeG * p[i].getPrecoG());
 			}
-
-			if (c.getAlt()){
-				result[2] = (quantidadeP * c.getAltPrecoP()) + (quantidadeG * c.getAltPrecoG());
-			} else {
-				result[2] = (quantidadeP * c.getPrecoP()) + (quantidadeG * c.getPrecoG());
+		} else {
+			for (int i = 0; i < p.length; i++){
+				if(p[i].getAlt()){
+					result[i] = (quantidadeP * p[i].getAltPrecoP()) + (quantidadeG * p[i].getAltPrecoG());
+				} else {
+					result[i] = (quantidadeP * p[i].getPrecoP()) + (quantidadeG * p[i].getPrecoG());
+				} 
 			}
 		}
 
