@@ -9,14 +9,14 @@ No bairro do canil, para realizar o banho nos animais, existem três petshops: M
 Canino Feliz, Vai Rex, e ChowChawgas. Cada um deles cobra preços diferentes para
 banho em cães pequenos e grandes e o preço pode variar de acordo com o dia da
 semana.    
-  - Meu Canino Feliz: Está distante 2km do canil. Em dias de semana o banho para
+-Meu Canino Feliz: Está distante 2km do canil. Em dias de semana o banho para
 cães pequenos custa R$20,00 e o banho em cães grandes custa R$40,00.
 Durante os finais de semana o preço dos banhos é aumentado em 20%.  
-  - Vai Rex: Está localizado na mesma avenida do canil, a 1,7km. O preço do banho
+-Vai Rex: Está localizado na mesma avenida do canil, a 1,7km. O preço do banho
 para dias úteis em cães pequenos é R$15,00 e em cães grandes é R$50,00.
 Durante os finais de semana o preço para cães pequenos é R$ 20,00 e para os
 grandes é R$ 55,00.    
-  - ChowChawgas: Fica a 800m do canil. O preço do banho é o mesmo em todos os
+-ChowChawgas: Fica a 800m do canil. O preço do banho é o mesmo em todos os
 dias da semana. Para cães pequenos custa R$30 e para cães grandes R$45,00.    
       
 - Como executar:  
