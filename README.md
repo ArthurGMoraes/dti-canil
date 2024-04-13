@@ -17,8 +17,8 @@ para dias úteis em cães pequenos é R$15,00 e em cães grandes é R$50,00.
 Durante os finais de semana o preço para cães pequenos é R$ 20,00 e para os
 grandes é R$ 55,00.    
   - ChowChawgas: Fica a 800m do canil. O preço do banho é o mesmo em todos os
-dias da semana. Para cães pequenos custa R$30 e para cães grandes R$45,00.  
-    
+dias da semana. Para cães pequenos custa R$30 e para cães grandes R$45,00.    
+      
 - Como executar:  
   - Clonar o repositório  
   - Run arquivo Aplicacao.java (project/src/main/java/app/Aplicacao.java)
