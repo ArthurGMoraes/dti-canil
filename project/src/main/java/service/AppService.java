@@ -10,7 +10,7 @@ import java.text.SimpleDateFormat;
 public class AppService {
     private PetShop mcf = new PetShop("Meu Canino Feliz", 20.0f, 40.0f, 2.0f, (20.0f*1.2f), (40.0f*1.2f));
     private PetShop vr = new PetShop("Vai Rex", 15.0f, 50.0f, 1.7f, 20.0f, 55.0f);
-    private PetShop cc = new PetShop("ChowChawgas", 15.0f, 50.0f, 1.7f);
+    private PetShop cc = new PetShop("ChowChawgas", 30.0f, 45.0f, 0.8f);
 	private PetShop[] psArr = new PetShop[]{mcf,vr,cc};
 
     private String pathArq = "project/src/main/resources/web/index.html";
@@ -37,9 +37,9 @@ public class AppService {
 		busca += "\t\t\t<td colspan=\"3\" align=\"left\">&nbsp;</td>";
 		busca += "\t\t</tr>";
 		busca += "\t\t<tr>";
-		busca += "\t\t\t<td>&nbsp;Data: <input class=\"input--register\" type=\"date\" name=\"data\" placeholder=\"data\" value=\"" +"\"></td>";
-		busca += "\t\t\t<td>Quantidade cachorros pequenos: <input class=\"input--register\" type=\"number\" name=\"qP\" placeholder=\"Quantidade\" min=\"0\" value=\"" +"\"></td>";
-		busca += "\t\t\t<td>Quantidade cachorros grandes: <input class=\"input--register\" type=\"number\" name=\"qG\" placeholder=\"Quantidade\" min=\"0\" value=\"" +"\"></td>";
+		busca += "\t\t\t<td>&nbsp;Data: <input class=\"input--register\" type=\"date\" name=\"data\" placeholder=\"data\" value=\"" +"\" required></td>";
+		busca += "\t\t\t<td>Quantidade cachorros pequenos: <input class=\"input--register\" type=\"number\" name=\"qP\" placeholder=\"Quantidade\" min=\"0\" max=\"100\" value=\"" +"\" required></td>";
+		busca += "\t\t\t<td>Quantidade cachorros grandes: <input class=\"input--register\" type=\"number\" name=\"qG\" placeholder=\"Quantidade\" min=\"0\" max=\"100\" value=\"" +"\" required></td>";
 		busca += "\t\t\t<td align=\"center\"><input type=\"submit\" value=\""+ buttonLabel +"\" class=\"input--main__style input--button\"></td>";
 		busca += "\t\t</tr>";
 		busca += "\t</table>";
