@@ -24,7 +24,7 @@ dias da semana. Para cães pequenos custa R$30 e para cães grandes R$45,00.
       
 - Como executar:  
   - Clonar o repositório  
-  - Run arquivo Aplicacao.java (project/src/main/java/app/Aplicacao.java)
+  - Executar arquivo Aplicacao.java em um ambiente que permita a execução do projeto como um todo (Run Java da Language Support for Java(TM) by Red Hat no VSCode por exemplo) (project/src/main/java/app/Aplicacao.java)  
   - acessar a aplicação em localhost:1234/home  
 
 - Premissas
