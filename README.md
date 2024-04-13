@@ -28,14 +28,17 @@ dias da semana. Para cães pequenos custa R$30 e para cães grandes R$45,00.
   - acessar a aplicação em localhost:1234/home  
 
 - Premissas
-  - O usuário não fará alterações nos dados dos petshops e nem adicionará novos petshops
-  -   
+  - O usuário não fará alterações nos dados dos petshops
+  - O usuário não adicionará novos petshops  
 
 - Decisões
-  - Não foi utilizado nenhum tipo de Banco de Dados devido à escala do projeto
+  - Não foi utilizado nenhum tipo de Banco de Dados devido à pequena escala do projeto
   - Criação de uma classe PetShop melhorando a clareza e a manutenção do código, além da modularidade e escalabilidade do projeto
+  - A escolha da quantidade de cachorros tem um valor máximo de 100 cachorros para cada tamanho. Por ser tratar de um canil, é esperado que possuam muitos cães e por isso um valor máximo alto, mesmo que na perspectiva do petshop talvez não seja possível atender essa demanda.
 
-- Comentários
+- Comentários  
+A escalabilidade do projeto foi um ponto parcialmente implementado, sendo que a adição de um novo petshop poderia ser feita a pedido do usuário e demandaria pouqíssima mudança no código. 
+
   
   
 
