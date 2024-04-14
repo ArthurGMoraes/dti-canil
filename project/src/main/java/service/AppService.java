@@ -5,6 +5,8 @@ import java.io.File;
 import spark.Request;
 import spark.Response;
 import model.PetShop;
+import java.text.NumberFormat;
+
 import java.text.SimpleDateFormat;
 
 public class AppService {
@@ -16,41 +18,43 @@ public class AppService {
     private String pathArq = "project/src/main/resources/web/index.html";
     private String form = "";
 	private Calendar calendar = Calendar.getInstance();
-	SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+	
+	int x = 0;
 
     public Object load(Request request, Response response) throws Exception {
-		readForm();
-		try{
-			
-		}  catch (Exception e) { System.out.println(e.getMessage()); }
+		if(x==0){
+			readForm();
+			x++;
+		}
 
 		String busca = "";
-		String action = "buscar";
+		String action = "/buscar";
 		String buttonLabel = "Buscar";
 
 		busca += "\t<form class=\"form--register\" action=\"" + action + "\" method=\"post\" id=\"buscar\">";
-		busca += "\t<table width=\"80%\" bgcolor=\"#FFFFFF\" align=\"center\">";
+		busca += "\t<table class=\"pesq\" width=\"100%\" align=\"center\">";
 		busca += "\t\t<tr>";
-		busca += "\t\t\t<td colspan=\"3\" align=\"left\"><font size=\"+2\"><b>&nbsp;&nbsp;&nbsp;</b></font></td>";
-		busca += "\t\t</tr>";
-		busca += "\t\t<tr>";
-		busca += "\t\t\t<td colspan=\"3\" align=\"left\">&nbsp;</td>";
+		busca += "\t\t\t<td colspan=\"3\" align=\"left\"><font size=\"+2\"><b>Buscar melhor preço: </b></font></td>";
 		busca += "\t\t</tr>";
 		busca += "\t\t<tr>";
 		busca += "\t\t\t<td>&nbsp;Data: <input class=\"input--register\" type=\"date\" name=\"data\" placeholder=\"data\" value=\"" +"\" required></td>";
-		busca += "\t\t\t<td>Quantidade cachorros pequenos: <input class=\"input--register\" type=\"number\" name=\"qP\" placeholder=\"Quantidade\" min=\"0\" max=\"100\" value=\"" +"\" required></td>";
-		busca += "\t\t\t<td>Quantidade cachorros grandes: <input class=\"input--register\" type=\"number\" name=\"qG\" placeholder=\"Quantidade\" min=\"0\" max=\"100\" value=\"" +"\" required></td>";
-		busca += "\t\t\t<td align=\"center\"><input type=\"submit\" value=\""+ buttonLabel +"\" class=\"input--main__style input--button\"></td>";
+		busca += "\t\t\t<td>Quantidade cachorros pequenos: <input class=\"input--register\" type=\"number\" name=\"qP\" placeholder=\"0\" min=\"0\" max=\"100\" value=\"" +"\" style=\"width: 10%;\" required></td>";
+		busca += "\t\t\t<td>Quantidade cachorros grandes: <input class=\"input--register\" type=\"number\" name=\"qG\" placeholder=\"0\" min=\"0\" max=\"100\" value=\"" +"\" style=\"width: 10%;\" required></td>";
+		busca += "\t\t\t<td align=\"center\"><input type=\"submit\" value=\""+ buttonLabel +"\" class=\"btn\" id=\"btn\"></td>";
 		busca += "\t\t</tr>";
 		busca += "\t</table>";
 		busca += "\t</form>";	
 		
-		form = form.replaceFirst("<CAMPO_PESQUISA>", busca);
+		//System.out.println(form);
+		form = form.replaceFirst("<CAMPO_PESQUISA />", busca);
 		
 		return form;
 	}
 
 	public Object buscar (Request request, Response response) throws Exception{
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+		String form2 = form;
 		String dateString = request.queryParams("data");
 		Date date = dateFormat.parse(dateString);
 		int quantidadeP = Integer.parseInt(request.queryParams("qP"));
@@ -72,11 +76,15 @@ public class AppService {
 
 		indice = conferir(precos, psArr);
 
-		resposta = psArr[indice].getNome() + " " + precos[indice];
-	
-		form = form.replaceFirst("<CAMPO_RESPOSTA>", resposta);
+		dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
-		return form;
+		resposta = "Para o dia " + dateFormat.format(date) + " o melhor preço é no petshop " + psArr[indice].getNome() + ", com o valor de " + NumberFormat.getCurrencyInstance().format(precos[indice]);
+		resposta = "\t<p class=\"resp\">" + resposta + "</p></td>";
+
+	
+		form2 = form2.replace("<CAMPO_RESPOSTA />", resposta);
+
+		return form2;
 	}
 
 	private int conferir(float[] p, PetShop[] ps){
