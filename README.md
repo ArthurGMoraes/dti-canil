@@ -30,6 +30,7 @@ dias da semana. Para cães pequenos custa R$30 e para cães grandes R$45,00.
 - Premissas
   - O usuário não fará alterações nos dados dos petshops
   - O usuário não adicionará novos petshops  
+  - O canil se chama "Canil Sadonana"
 
 - Decisões
   - Não foi utilizado nenhum tipo de Banco de Dados devido à pequena escala do projeto
