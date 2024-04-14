@@ -34,12 +34,12 @@ public class AppService {
 		busca += "\t<form class=\"form--register\" action=\"" + action + "\" method=\"post\" id=\"buscar\">";
 		busca += "\t<table class=\"pesq\" width=\"100%\" align=\"center\">";
 		busca += "\t\t<tr>";
-		busca += "\t\t\t<td colspan=\"3\" align=\"left\"><font size=\"+2\"><b>Buscar melhor preço: </b></font></td>";
+		busca += "\t\t\t<td colspan=\"3\" align=\"left\"><font size=\"+2\"><h2>Buscar melhor preço: </h2></font></td>";
 		busca += "\t\t</tr>";
 		busca += "\t\t<tr>";
 		busca += "\t\t\t<td>&nbsp;Data: <input class=\"input--register\" type=\"date\" name=\"data\" placeholder=\"data\" value=\"" +"\" required></td>";
-		busca += "\t\t\t<td>Quantidade cachorros pequenos: <input class=\"input--register\" type=\"number\" name=\"qP\" placeholder=\"0\" min=\"0\" max=\"100\" value=\"" +"\" style=\"width: 10%;\" required></td>";
-		busca += "\t\t\t<td>Quantidade cachorros grandes: <input class=\"input--register\" type=\"number\" name=\"qG\" placeholder=\"0\" min=\"0\" max=\"100\" value=\"" +"\" style=\"width: 10%;\" required></td>";
+		busca += "\t\t\t<td>Quantidade de cães pequenos: <input class=\"input--register\" type=\"number\" name=\"qP\" placeholder=\"0\" min=\"0\" max=\"100\" value=\"" +"\" style=\"width: 10%;\" required></td>";
+		busca += "\t\t\t<td>Quantidade de cães grandes: <input class=\"input--register\" type=\"number\" name=\"qG\" placeholder=\"0\" min=\"0\" max=\"100\" value=\"" +"\" style=\"width: 10%;\" required></td>";
 		busca += "\t\t\t<td align=\"center\"><input type=\"submit\" value=\""+ buttonLabel +"\" class=\"btn\" id=\"btn\"></td>";
 		busca += "\t\t</tr>";
 		busca += "\t</table>";
@@ -78,7 +78,10 @@ public class AppService {
 
 		dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
-		resposta = "Para o dia " + dateFormat.format(date) + " o melhor preço é no petshop " + psArr[indice].getNome() + ", com o valor de " + NumberFormat.getCurrencyInstance().format(precos[indice]);
+		String c1 = (quantidadeP==1)?"cão pequeno":"cães pequenos";
+		String c2 = (quantidadeG==1)?"cão grande":"cães grandes";
+
+		resposta = "Para o dia " + dateFormat.format(date) + " o melhor preço é no petshop " + psArr[indice].getNome() + ", com o valor de " + NumberFormat.getCurrencyInstance().format(precos[indice]) + " para " + quantidadeP + " " + c1 + " e " + quantidadeG + " " + c2;
 		resposta = "\t<p class=\"resp\">" + resposta + "</p></td>";
 
 	
