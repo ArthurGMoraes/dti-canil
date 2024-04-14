@@ -50,7 +50,7 @@ public class AppService {
 		
 		return form;
 	}
-
+	
 	public Object buscar (Request request, Response response) throws Exception{
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
