@@ -1,5 +1,6 @@
 # dti-canil
-Teste Prático - dti digital      
+Teste Prático - dti digital  
+Arthur Gonçalves de Moraes
   
 **O problema**  
 Senhor Eduardo é proprietário de um canil em Belo Horizonte, ele trabalha com
@@ -38,7 +39,7 @@ dias da semana. Para cães pequenos custa R$30 e para cães grandes R$45,00.
   - A escolha da quantidade de cachorros tem um valor máximo de 100 cachorros para cada tamanho. Por ser tratar de um canil, é esperado que possuam muitos cães e por isso um valor máximo alto, mesmo que na perspectiva do petshop talvez não seja possível atender essa demanda.
 
 - Comentários  
-A escalabilidade do projeto foi um ponto parcialmente implementado, sendo que a adição de um novo petshop poderia ser feita a pedido do usuário e demandaria pouqíssima mudança no código. 
+A escalabilidade do projeto foi um ponto parcialmente implementado, sendo que a adição de um novo petshop poderia ser feita a pedido do usuário e demandaria pouquíssima mudança no código. 
 
   
   
